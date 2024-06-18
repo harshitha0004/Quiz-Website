@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css">
+    <title>Faculty Page</title>
+</head>
+<body>
+    <div class="container">
+        <h1>WELCOME TO QUIZ</h1>
+        <nav>
+            <ul>
+                <li><a href="#" >Profile</a></li>
+                <li><a href="signup.html" >Log out</a></li>
+            </ul>
+        </nav>
+        <button id="questionButton" onclick="openQuestionPage()">Question</button>
+        <button id="dashboardButton" onclick="openDashboardPage()">Dashboard</button>
+    </div>
+
+    <script>
+        function openQuestionPage() {
+            window.open("question.html", "_blank");
+        }
+
+        function openDashboardPage() {
+            window.open("dashboard.html", "_blank");
+        }
+    </script>
+</body>
+</html>
