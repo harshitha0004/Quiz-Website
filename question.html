@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles.css">
+    <title>Question Page</title>
+    <style>
+        /* CSS to increase the size of the text box */
+        #Question {
+            width: 700px; /* Adjust the desired width */
+            height: 50px; /* Adjust the desired height */
+            resize: horizontal; /* Allow horizontal resizing */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="/QandA" method="POST" id="form">
+            <nav>
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="signup.html">Log out</a></li>
+                </ul>
+            </nav>
+            <div class="input-group">
+                <label for="Question"><h2>Give a question.</h2></label><br><br>
+                <input type="text" id="Question" name="Question">
+                <div class="error" id="QuestionError"></div>
+            </div>
+            <br>
+            <div>
+                <label for="option1Radio">1</label>
+                <input type="radio" id="option1Radio" name="option" onchange="updateResult()">
+                <input type="text" id="option1Text" placeholder="Enter the option">
+            </div>
+            <br>
+            <div>
+                <label for="option2Radio">2</label>
+                <input type="radio" id="option2Radio" name="option" onchange="updateResult()">
+                <input type="text" id="option2Text" placeholder="Enter the option">
+            </div>
+            <br>
+            <div>
+                <label for="option3Radio">3</label>
+                <input type="radio" id="option3Radio" name="option" onchange="updateResult()">
+                <input type="text" id="option3Text" placeholder="Enter the option">
+            </div>
+            <br>
+            <div>
+                <label for="option4Radio">4</label>
+                <input type="radio" id="option4Radio" name="option" onchange="updateResult()">
+                <input type="text" id="option4Text" placeholder="Enter the option">
+            </div>
+            <br><br>
+            <textarea id="result" rows="5" cols="30"></textarea>
+            <br><br>
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function updateResult() {
+            var resultBox = document.getElementById("result");
+            var result = "Selected option: ";
+
+            if (document.getElementById("option1Radio").checked) {
+                result +=  "1: " + document.getElementById("option1Text").value + " ";
+            }
+            if (document.getElementById("option2Radio").checked) {
+                result += " 2: " + document.getElementById("option2Text").value + " ";
+            }
+            if (document.getElementById("option3Radio").checked) {
+                result += " 3: " + document.getElementById("option3Text").value + " ";
+            }
+            if (document.getElementById("option4Radio").checked) {
+                result += " 4: " + document.getElementById("option4Text").value + " ";
+            }
+
+            resultBox.value = result.trim();
+        }
+
+        function submitForm() {
+            var confirmation = confirm("Do you want to add another question?");
+
+            if (confirmation) {
+                // Reset the form to add another question
+                document.getElementById("form").reset();
+                document.getElementById("result").value = "";
+            } else {
+                
+                // Submit the form
+                document.getElementById("form").submit();
+            }
+        }
+    </script>
+</body>
+</html>
